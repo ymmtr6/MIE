@@ -1,0 +1,12 @@
+# MACOS
+
+.DS_Store
+*.DS_Store
+
+#python
+*.pyc
+__pycache__
+
+# tensorflow
+MNIST_data/
+summary/
