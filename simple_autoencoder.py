@@ -67,7 +67,7 @@ class SimpleAE(object):
         )
 
         for step in range(2000):
-            batch_xs, batch_ys = mnist.train.next_batch(
+            batch_xs, batch_ys = self.mnist.train.next_btch(
                 self.params["BATCH_SIZE"])
             sess.run(train_step, feed_dict={
                 x: batch_xs, keep_prob: (1 - self.params["DROP_OUT_RATE"])})
