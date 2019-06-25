@@ -14,7 +14,7 @@ x_test = x_test.astype("float32") / 255.
 x_train = np.reshape(x_train, (len(x_train), 28, 28, 1))
 x_test = np.reshape(x_test, (len(x_test), 28, 28, 1))
 
-batch_size = 1024
+batch_size = 2048
 epochs = 1
 
 # lr, beta1, beta2, epsilon, decay
@@ -44,12 +44,15 @@ def create_model():
 
 
 def ae(x):
+    print("lr={}, beta1={}, beta2={}".format(x[0], x[1], x[2]))
     model = create_model()
     adam = keras.optimizers.Adam(
         lr=x[0], beta_1=x[1], beta_2=x[2], epsilon=1e-07, decay=0.0)
     model.compile(optimizer=adam, loss="binary_crossentropy")
     model.fit(x_train, x_train, epochs=epochs,
-              batch_size=batch_size, shuffle=True, callbacks=[])
+              batch_size=batch_size, shuffle=True,
+              validation_split=0.1,
+              callbacks=[])
     return model.evaluate(x_test, x_test, verbose=0)
 
 
