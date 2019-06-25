@@ -18,7 +18,7 @@ batch_size = 1024
 epochs = 1
 
 # lr, beta1, beta2, epsilon, decay
-bounds = [(0, 0.5), (0, 1), (0, 1)]
+bounds = [(0, 0.5), (0, 0.5), (0.5, 1.0)]
 
 
 def create_model():
@@ -53,6 +53,6 @@ def ae(x):
     return model.evaluate(x_test, x_test, verbose=0)
 
 
-result = differential_evolution(ae, bounds)
+result = differential_evolution(ae, bounds, polish=False)
 print(result.x)
 print(result.y)
