@@ -6,10 +6,10 @@ RUN set -x \
 && apt install -y libsm6 libxrender1 libfontconfig1 libxext6 libglib2.0-0 \
 && apt install -y vim \
 && ln -s /usr/bin/python3 python \\
-&& pip install --upgrade pip
+&& pip3 install --upgrade pip
 
 RUN set -x \
-&& pip install tensorflow-gpu keras numpy opencv-python
+&& pip3 install tensorflow-gpu keras numpy opencv-python
 
 ENV HOME /workspace
 WORKDIR /workspace
