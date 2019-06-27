@@ -7,6 +7,8 @@ from keras.models import Model
 from keras.datasets import mnist
 from keras import backend as K
 import keras
+import json
+from pprint import pprint
 
 (x_train, _), (x_test, _) = mnist.load_data()
 x_train = x_train.astype("float32") / 255.
@@ -56,6 +58,9 @@ def ae(x):
     return model.evaluate(x_test, x_test, verbose=0)
 
 
-result = differential_evolution(ae, bounds, polish=False, disp=True)
-print(result.x)
-print(result.y)
+result = differential_evolution(
+    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1)
+pprint(result)
+
+with open("output.json", "w") as f:
+    json.dump(result, f, indent=4)
