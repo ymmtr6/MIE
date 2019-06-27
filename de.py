@@ -58,8 +58,17 @@ def ae(x):
     return model.evaluate(x_test, x_test, verbose=0)
 
 
+"""
+differential_evolution
+
+ARGS:
+    - updating: 個体の更新を行うタイミングを指定する.
+    "immediate", "deferred"の二種類があるが、並列計算する場合は"deferred"
+    - workers: 並列に計算を行う。並列プロセス数の指定。-1を指定した場合はCPUのコア数。
+
+"""
 result = differential_evolution(
-    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1)
+    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5)
 pprint(result)
 
 with open("output.json", "w") as f:
