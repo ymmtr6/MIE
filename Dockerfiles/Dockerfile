@@ -9,7 +9,7 @@ RUN set -x \
 && pip3 install --upgrade pip
 
 RUN set -x \
-&& pip3 install tensorflow-gpu keras numpy opencv-python
+&& pip3 install tensorflow-gp==1.5.0 keras numpy opencv-python
 
 ENV HOME /workspace
 WORKDIR /workspace
