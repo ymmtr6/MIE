@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn6-runtime
+FROM nvidia/cuda:8.0-cudnn7-runtime
 
 RUN set -x \
 && apt update \
