@@ -48,6 +48,7 @@ def create_model():
 def ae(x):
     #print("lr={}, beta1={}, beta2={}".format(x[0], x[1], x[2]))
     model = create_model()
+    model._make_predict_function()
     adam = keras.optimizers.Adam(
         lr=x[0], beta_1=x[1], beta_2=x[2], epsilon=1e-07, decay=0.0)
     model.compile(optimizer=adam, loss="binary_crossentropy")
