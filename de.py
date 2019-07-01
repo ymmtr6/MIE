@@ -10,6 +10,9 @@ import keras
 import json
 from pprint import pprint
 import argparse
+import os
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 parser = argparse.ArgumentParser(description="DE-heyperParam")
 
