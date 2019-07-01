@@ -65,10 +65,11 @@ def ae(x):
     adam = keras.optimizers.Adam(
         lr=x[0], beta_1=x[1], beta_2=x[2], epsilon=1e-07, decay=0.0)
     model.compile(optimizer=adam, loss="binary_crossentropy")
+    keras.callbacks.EarlyStopping()
     model.fit(x_train, x_train, epochs=epochs,
               batch_size=batch_size, shuffle=False,
               validation_split=0.1,
-              callbacks=[], verbose=0)
+              callbacks=[keras.callbacks.EarlyStopping()], verbose=0)
     return model.evaluate(x_test, x_test, verbose=0)
 
 
