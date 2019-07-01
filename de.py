@@ -14,6 +14,8 @@ import argparse
 parser = argparse.ArgumentParser(description="DE-heyperParam")
 
 parser.add_argument("-o", "--output", default="output.json")
+parser.add_argument("-w", "--workers", default=-1)
+parser.add_argument("")
 args = parser.parse_args()
 
 (x_train, _), (x_test, _) = mnist.load_data()

@@ -1,15 +1,7 @@
-FROM nvidia/cuda:9.0-cudnn7-devel
+FROM tensorflow/tensorflow:latest-py3
+LABEL maintainer="riku yamamoto"
 
-RUN set -x \
-&& apt update \
-&& apt install -y python3-pip python3-dev \
-&& apt install -y libsm6 libxrender1 libfontconfig1 libxext6 libglib2.0-0 \
-&& apt install -y vim \
-&& ln -s /usr/bin/python3 python \
-&& pip3 install --upgrade pip
+RUN pip install -q keras
 
-RUN set -x \
-&& pip3 install tensorflow-gpu==1.5.0 keras numpy opencv-python
-
-ENV HOME /workspace
+ENV HOME=/workspace
 WORKDIR /workspace
