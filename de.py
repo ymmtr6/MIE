@@ -20,6 +20,8 @@ parser.add_argument("-o", "--output", default="output.json")
 parser.add_argument("-w", "--workers", default=-1)
 parser.add_argument("-m", "--maxiter", default=10)
 parser.add_argument("-p", "--popsize", defaut=5)
+parser.add_argument("-e", "--epochs", defaut=1)
+parser.add_argument("-b", "--batch_size", defaut=1024)
 parser.add_argument("")
 args = parser.parse_args()
 
@@ -29,8 +31,8 @@ x_test = x_test.astype("float32") / 255.
 x_train = np.reshape(x_train, (len(x_train), 28, 28, 1))
 x_test = np.reshape(x_test, (len(x_test), 28, 28, 1))
 
-batch_size = 2048
-epochs = 1
+batch_size = args.batch_size
+epochs = args.epochs
 
 # lr, beta1, beta2, epsilon, decay
 bounds = [(0, 0.5), (0, 0.5), (0.5, 1.0)]
