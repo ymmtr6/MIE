@@ -31,15 +31,15 @@ class DE(object):
                 self._pop, self._nd) * (self._up_lim - self._low_lim) + self._low_lim
         self._orbit = []
 
-    def _selection(self, p, u): ∏
-    fu = self._evaluate_with_check(u)
-    q1 = fu <= self._f_current[p] if self._is_minimize else fu >= self._f_current[p]
-    q2 = np.any(u < self._low_lim)
-    q3 = np.any(u > self._up_lim)
-    q = q1 * ~q2 * ~q3
-    f_p1 = fu if q else self._f_current[p]
-    x_p1 = u if q else self._x_current[p]
-    return p, f_p1, x_p1
+    def _selection(self, p, u):
+        fu = self._evaluate_with_check(u)
+        q1 = fu <= self._f_current[p] if self._is_minimize else fu >= self._f_current[p]
+        q2 = np.any(u < self._low_lim)
+        q3 = np.any(u > self._up_lim)
+        q = q1 * ~q2 * ~q3
+        f_p1 = fu if q else self._f_current[p]
+        x_p1 = u if q else self._x_current[p]
+        return p, f_p1, x_p1
 
     def _mutation(self, current, mutant, num, sf):
         assert num > 0

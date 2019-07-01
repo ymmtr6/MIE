@@ -12,8 +12,11 @@ from pprint import pprint
 import argparse
 import os
 import json_encoder
+import warnings
 
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+warnings.filterwarnings("ignore")
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 parser = argparse.ArgumentParser(description="DE-heyperParam")
 
