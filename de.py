@@ -13,6 +13,9 @@ import argparse
 import os
 import json_encoder
 import warnings
+import tensorflow as tf
+
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 warnings.filterwarnings("ignore")
 
