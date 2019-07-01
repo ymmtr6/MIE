@@ -67,13 +67,6 @@ ARGS:
     "immediate", "deferred"の二種類があるが、並列計算する場合は"deferred"
     - workers: 並列に計算を行う。並列プロセス数の指定。-1を指定した場合はCPUのコア数。
 
-{'fun': 0.22151452987194062,
- 'message': 'Maximum number of iterations has been exceeded.',
- 'nfev': 165,
- 'nit': 10,
- 'success': False,
- 'x': array([0.00612182, 0.48125592, 0.79976852])}
-
 """
 result = differential_evolution(
     ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5)
