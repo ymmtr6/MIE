@@ -18,6 +18,8 @@ parser = argparse.ArgumentParser(description="DE-heyperParam")
 
 parser.add_argument("-o", "--output", default="output.json")
 parser.add_argument("-w", "--workers", default=-1)
+parser.add_argument("-m", "--maxiter", default=10)
+parser.add_argument("-p", "--popsize", defaut=5)
 parser.add_argument("")
 args = parser.parse_args()
 
