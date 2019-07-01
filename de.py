@@ -11,6 +11,7 @@ import json
 from pprint import pprint
 import argparse
 import os
+import json_encoder
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
@@ -95,4 +96,4 @@ result = differential_evolution(
 pprint(result)
 
 with open(args.output, "w") as f:
-    json.dump(result, f, indent=4)
+    json.dump(result, f, indent=4, cls=json_encoder.MyEncoder())
