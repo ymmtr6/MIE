@@ -23,6 +23,7 @@ parser.add_argument("-m", "--maxiter", default=10)
 parser.add_argument("-p", "--popsize", default=5)
 parser.add_argument("-e", "--epochs", default=1)
 parser.add_argument("-b", "--batch_size", default=1024)
+parser.add_argument("-v", "--verbose", default=0)
 args = parser.parse_args()
 
 (x_train, _), (x_test, _) = mnist.load_data()
@@ -61,7 +62,7 @@ def create_model():
 
 
 def ae(x):
-    #print("lr={}, beta1={}, beta2={}".format(x[0], x[1], x[2]))
+    # print("lr={}, beta1={}, beta2={}".format(x[0], x[1], x[2]))
     model = create_model()
     model._make_predict_function()
     adam = keras.optimizers.Adam(
@@ -71,7 +72,7 @@ def ae(x):
     model.fit(x_train, x_train, epochs=epochs,
               batch_size=batch_size, shuffle=False,
               validation_split=0.1,
-              callbacks=[keras.callbacks.EarlyStopping()], verbose=0)
+              callbacks=[keras.callbacks.EarlyStopping()], verbose=args.verbose)
     return model.evaluate(x_test, x_test, verbose=0)
 
 
@@ -96,4 +97,4 @@ result = differential_evolution(
 pprint(result)
 
 with open(args.output, "w") as f:
-    json.dump(result, f, indent=4, cls=json_encoder.MyEncoder())
+    json.dump(result, f, indent=4, cls=json_encoder.MyEncoder)
