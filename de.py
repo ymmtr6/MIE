@@ -22,7 +22,6 @@ parser.add_argument("-m", "--maxiter", default=10)
 parser.add_argument("-p", "--popsize", default=5)
 parser.add_argument("-e", "--epochs", default=1)
 parser.add_argument("-b", "--batch_size", default=1024)
-parser.add_argument("")
 args = parser.parse_args()
 
 (x_train, _), (x_test, _) = mnist.load_data()
