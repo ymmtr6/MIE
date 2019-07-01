@@ -13,7 +13,7 @@ import argparse
 import os
 import json_encoder
 
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 parser = argparse.ArgumentParser(description="DE-heyperParam")
 
