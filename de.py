@@ -9,6 +9,12 @@ from keras import backend as K
 import keras
 import json
 from pprint import pprint
+import argparse
+
+parser = argparse.ArgumentParser(description="DE-heyperParam")
+
+parser.add_argument("-o", "--output", default="output.json")
+args = parser.parse_args()
 
 (x_train, _), (x_test, _) = mnist.load_data()
 x_train = x_train.astype("float32") / 255.
@@ -79,5 +85,5 @@ result = differential_evolution(
     ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5)
 pprint(result)
 
-with open("output.json", "w") as f:
+with open(args.output, "w") as f:
     json.dump(result, f, indent=4)
