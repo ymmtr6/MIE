@@ -27,6 +27,7 @@ parser.add_argument("-o", "--output", default="output.json")
 parser.add_argument("-w", "--workers", default=-1)
 parser.add_argument("-m", "--maxiter", default=10)
 parser.add_argument("-p", "--popsize", default=5)
+parser.add_argument("-s", "--seed", default=0)
 parser.add_argument("-e", "--epochs", default=1)
 parser.add_argument("-b", "--batch_size", default=1024)
 parser.add_argument("-v", "--verbose", default=0)
@@ -99,7 +100,7 @@ ARGS:
 
 """
 result = differential_evolution(
-    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5)
+    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5, seed=args.seed)
 pprint(result)
 
 with open(args.output, "w") as f:
