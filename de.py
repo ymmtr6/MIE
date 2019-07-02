@@ -100,7 +100,7 @@ ARGS:
 
 """
 result = differential_evolution(
-    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5, seed=args.seed)
+    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5, seed=int(args.seed))
 pprint(result)
 
 result["x"] = result["x"].tolist()
