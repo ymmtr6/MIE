@@ -19,6 +19,21 @@ tf.logging.set_verbosity(tf.logging.ERROR)
 
 warnings.filterwarnings("ignore")
 
+strategys = [
+    "best1bin",
+    "best1exp",
+    "rand1exp",
+    "randtobest1exp",
+    "currenttobest1exp",
+    "best2exp",
+    "rand2exp",
+    "randtobest1bin",
+    "currenttobest1bin",
+    "best2bin",
+    "rand2bin",
+    "rand1bin"
+]
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 parser = argparse.ArgumentParser(description="DE-heyperParam")
@@ -31,6 +46,9 @@ parser.add_argument("-s", "--seed", default=0)
 parser.add_argument("-e", "--epochs", default=1)
 parser.add_argument("-b", "--batch_size", default=1024)
 parser.add_argument("-v", "--verbose", default=0)
+parser.add_argument("--strategy", choices=strategys, default="best1bin")
+parser.add_argument("--mutation", defualt=0.2, type=float)
+parser.add_argument("--recombination", default=0.1, type=float)
 args = parser.parse_args()
 
 (x_train, _), (x_test, _) = mnist.load_data()
@@ -100,7 +118,8 @@ ARGS:
 
 """
 result = differential_evolution(
-    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5, seed=int(args.seed))
+    ae, bounds, polish=False, disp=True, maxiter=10, updating="deferred", workers=-1, popsize=5, seed=int(args.seed), strategy=args.strategy, mutation=args.mutation, recombination=args.recombination
+)
 pprint(result)
 
 result["x"] = result["x"].tolist()
