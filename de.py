@@ -47,7 +47,7 @@ parser.add_argument("-e", "--epochs", default=1)
 parser.add_argument("-b", "--batch_size", default=1024)
 parser.add_argument("-v", "--verbose", default=0)
 parser.add_argument("--strategy", choices=strategys, default="best1bin")
-parser.add_argument("--mutation", defualt=0.2, type=float)
+parser.add_argument("--mutation", default=0.2, type=float)
 parser.add_argument("--recombination", default=0.1, type=float)
 args = parser.parse_args()
 
