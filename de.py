@@ -61,7 +61,7 @@ batch_size = args.batch_size
 epochs = args.epochs
 
 # lr, beta1, beta2, epsilon, decay
-bounds = [(0, 0.5), (0, 0.5), (0.5, 1.0)]
+bounds = [(0, 0.5), (0, 1.0), (0.0, 1.0)]
 
 
 def create_model():
